@@ -6,3 +6,4 @@ Pillow
 pyjwt
 pytz
 python-dotenv
+gunicorn
