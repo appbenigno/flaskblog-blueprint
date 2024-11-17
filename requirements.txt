@@ -2,6 +2,8 @@ flask
 flask-wtf
 flask-sqlalchemy
 flask-bcrypt
+flask-mail
+flask-login
 Pillow
 pyjwt
 pytz
