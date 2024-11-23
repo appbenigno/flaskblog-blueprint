@@ -1,9 +1,8 @@
-from secrets import token_hex
-import os
+import secrets
 
 FILE_NAME = 'flaskblog/.env'
 
-SECRET_KEY = token_hex(nbytes=12)
+SECRET_KEY = secrets.token_hex(nbytes=8)
 SQLALCHEMY_DATABASE_URI = "sqlite:///blog.db"
 MAIL_USERNAME = ''
 MAIL_PASSWORD = ''
