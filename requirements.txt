@@ -4,6 +4,7 @@ flask-sqlalchemy
 flask-bcrypt
 flask-mail
 flask-login
+email-validator
 Pillow
 pyjwt
 pytz
