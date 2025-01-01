@@ -22,11 +22,9 @@ server {
     }
 }
 
-# Change ownership to www-data (or nginx, based on your OS)
-sudo chown -R www-data:www-data /home/appbenigno/full-stack/flaskblog-blueprint/flaskblog/static
-
-# Set appropriate permissions
-sudo chmod -R 755 /home/appbenigno/full-stack/flaskblog-blueprint/flaskblog/static
+# Change ownership of www-data (or nginx, based on your OS)
+sudo nano /etc/nginx/nginx.conf
+-> user whatever;
 
 # Link the configuration file
 sudo ln -s /etc/nginx/sites-available/flaskblog /etc/nginx/sites-enabled
