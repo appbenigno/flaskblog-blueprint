@@ -37,9 +37,6 @@ sudo nginx -t
 # Restart nginx
 sudo systemctl restart nginx
 
-# Collect static files if applicable
-python manage.py collectstatic
-
 # Configure firewall
 sudo ufw allow 'Nginx Full'
 
