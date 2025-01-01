@@ -1,0 +1,17 @@
+# Disallow root logins over ssh
+#
+sudo nano /etc/ssh/sshd_config
+-> PermitRootLogin no
+-> PasswordAuthentication no
+sudo systemctl restart sshd
+
+# Install pip and virtual environment
+sudo apt install python3-pip
+sudo apt install python3-venv
+
+# Create virtual environment in project root folder
+python3 -m venv venv
+
+# Activate virtual environment and install requirements.txt
+source venv/bin/activate
+pip install -r requirements.txt
