@@ -1,16 +1,15 @@
 import os
-from dotenv import load_dotenv
+import json
 
-# Load environment variables if present
-load_dotenv()
-
+with open(file='/etc/config-flask.json', mode='r') as config_file:
+    config = json.load(fp=config_file)
 
 class Config:
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
-    MAIL_SERVER = 'smtp.gogolemail.com'
+    SECRET_KEY = config['SECRET_KEY']
+    SQLALCHEMY_DATABASE_URI = config['SQLALCHEMY_DATABASE_URI']
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.getenv('MAIL_USERNAME')
-    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    API_KEY = os.getenv('API_KEY')
+    MAIL_USERNAME = config['EMAIL_USER']
+    MAIL_PASSWORD = config['EMAIL_PASS']
+    API_KEY = config['API_KEY']
