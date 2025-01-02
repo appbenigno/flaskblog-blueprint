@@ -12,7 +12,7 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static {
-        alias /home/appbenigno/full-stack/flaskblog-blueprint/flaskblog/static;
+        alias /home/johndoe/full-stack/flaskblog-blueprint/flaskblog/static;
     }
 
     location / {
@@ -24,7 +24,7 @@ server {
 
 # Change ownership of www-data (or nginx, based on your OS)
 sudo nano /etc/nginx/nginx.conf
--> user whatever;
+-> user johndoe;
 
 # Link the configuration file
 sudo ln -s /etc/nginx/sites-available/flaskblog /etc/nginx/sites-enabled
@@ -51,9 +51,9 @@ sudo apt install supervisor
 sudo nano /etc/supervisor/conf.d/flaskblog.conf
 
 [program:flaskblog]
-directory=/home/appbenigno/full-stack/flaskblog-blueprint
-command=/home/appbenigno/full-stack/flaskblog-blueprint/venv/bin/gunicorn -w 3 run:app
-user=appbenigno
+directory=/home/johndoe/full-stack/flaskblog-blueprint
+command=/home/johndoe/full-stack/flaskblog-blueprint/venv/bin/gunicorn -w 3 run:app
+user=johndoe
 autostart=true
 autorestart=true
 stopasgroup=true
