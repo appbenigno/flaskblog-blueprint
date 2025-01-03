@@ -2,11 +2,11 @@ from datetime import datetime, timedelta
 from flaskblog import db, login_manager
 from flask import current_app
 from sqlalchemy.orm import mapped_column, relationship
-from sqlalchemy import Integer, String, Text, DateTime, ForeignKey
+from sqlalchemy import Integer, String, Text, DateTime, ForeignKey, UUID
 from flask_login import UserMixin
 import jwt
 import pytz
-
+import uuid
 
 # class User(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +21,8 @@ import pytz
 #         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'user'
+
     id = mapped_column(Integer, primary_key=True)
     username = mapped_column(String(20), unique=True, nullable=False)
     email = mapped_column(String(120), unique=True, nullable=False)
@@ -48,7 +50,7 @@ class User(db.Model, UserMixin):
         try:
             data = jwt.decode(
                 jwt=token, key=current_app.config['SECRET_KEY'], algorithms=["HS256"])
-            user_id = data.get('user_id')
+            user_id = data['user_id']
         except:
             return None
 
@@ -69,7 +71,9 @@ class User(db.Model, UserMixin):
 #         return f"Post('{self.title}', '{self.date_posted}')"
 
 class Post(db.Model):
-    id = mapped_column(Integer, primary_key=True)
+    __tablename__ = 'post'
+
+    id = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     title = mapped_column(String(100), nullable=False)
     date_posted = mapped_column(DateTime, nullable=False, default=datetime.now)
     content = mapped_column(Text, nullable=False)
