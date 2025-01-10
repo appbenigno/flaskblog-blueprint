@@ -1,3 +1,24 @@
+# First Steps
+apt update && apt upgrade -y
+
+# Set Host Name
+hostnamectl set-hostname whatever
+
+# Set hosts file ip address and hostname
+nano /etc/hosts
+> x.x.x.x hostname
+
+# Add limited user
+adduser whatever
+
+# Add user to sudo group
+adduser whatever sudo
+
+# Generate SSH server keys
+ssh-keygen -b 4096 -t rsa
+-- or --
+ssh-keygen -t ed25519
+
 # Disallow root logins over ssh
 #
 sudo nano /etc/ssh/sshd_config
